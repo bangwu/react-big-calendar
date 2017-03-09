@@ -163,7 +163,6 @@ let DaySlot = React.createClass({
         var { style: xStyle, className } = eventPropGetter(event, start, end, _isSelected)
 
       let { height, top, width, xOffset } = style
-
       return (
         <EventWrapper event={event} key={'evt_' + idx}>
           <div
@@ -172,7 +171,9 @@ let DaySlot = React.createClass({
               top: `${top}%`,
               height: `${height}%`,
               [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
-              width: `${width}%`
+              width: `${width}%`,
+              backgroundColor: [event.end < Date.now() ? '#808080': '#3174AD'],
+              borderColor: [event.end < Date.now() ? '#808080': '#3174AD']
             }}
             title={label + ': ' + title }
             onClick={(e) => this._select(event, e)}
